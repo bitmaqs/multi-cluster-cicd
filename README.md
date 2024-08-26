@@ -7,9 +7,6 @@ Welcome to Task Master Pro, a comprehensive Java application designed to manage 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Introduction
 
