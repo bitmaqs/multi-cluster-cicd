@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: taskmaster-deployment
+spec:
+  selector:
+    matchLabels:
+      app: taskmaster
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: taskmaster
+    spec:
+      containers:
+        - name: taskmaster
+          image: bitmaqs/prodtaskmaster:latest # Image that will be used to containers in the cluster
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080 # The port that the container is running on in the cluster
+
+
+---
+
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: taskmaster-ssvc
+spec:
+  selector:
+    app: taskmaster
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080 
+  type: LoadBalancer
